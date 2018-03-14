@@ -8,7 +8,6 @@ checkfunc.$inject = ['$scope'];
 function checkfunc($scope){
     $scope.food = '';
     
-    
     $scope.checkiftm = function(){
         var fooditems_temp = $scope.food.split(",");
         var fooditems = [];
@@ -18,9 +17,8 @@ function checkfunc($scope){
                 
             }
         }
-
         $scope.food_result = '';
-        console.log(fooditems);
+        console.log(fooditems.length);
         if (fooditems.length == 0){
             $scope.food_result = 'E';
         }
@@ -30,8 +28,6 @@ function checkfunc($scope){
         else if(fooditems.length > 3){
             $scope.food_result = 'Too much!';
         } 
-    };
-    
+    };   
 }
-
 }) ();
