@@ -22,9 +22,11 @@
             <input type="text" ng-model="food" class="form-control" placeholder="Enter comma-separated food items" >
             <button class="btn btn-lg btn-success" ng-click="checkiftm()" style="margin-top: 1em">Check if too much</button>
         </div>
-        
-        <div class="alert alert-success" ng-if="food_result != 'E'">
-            <strong>{{ food_result }}</strong> 
+
+        <div ng-if="show_res">
+            <div class="alert alert-success" ng-if="food_result != 'E'">
+                <strong>{{ food_result }}</strong> 
+            </div>
         </div>
         <div class="alert alert-danger" ng-if="food_result == 'E'">
             <strong>Please enter data first!</strong>  

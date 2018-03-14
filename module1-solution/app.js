@@ -7,18 +7,17 @@ angular.module('mod1App',[])
 checkfunc.$inject = ['$scope'];
 function checkfunc($scope){
     $scope.food = '';
-    
+    $scope.show_res = false;
     $scope.checkiftm = function(){
+        $scope.show_res = true;
         var fooditems_temp = $scope.food.split(",");
         var fooditems = [];
         for (var i=0; i<fooditems_temp.length; i++){
             if (fooditems_temp[i] != ''){
-                fooditems.push(fooditems_temp[i]);
-                
+                fooditems.push(fooditems_temp[i]); 
             }
         }
         $scope.food_result = '';
-        console.log(fooditems.length);
         if (fooditems.length == 0){
             $scope.food_result = 'E';
         }
