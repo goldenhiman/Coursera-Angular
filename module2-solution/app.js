@@ -17,9 +17,12 @@ function ToBuyController(ShoppingListCheckOffService){
         ShoppingListCheckOffService.addItem(tbc.itemName,tbc.itemQuantity);
     }
 
-    console.log("YESSS");
     tbc.TBitems = ShoppingListCheckOffService.getTBItems();
-    console.log(tbc.TBitems[0].name);
+
+    tbc.move_to_bought = function(index){
+        ShoppingListCheckOffService.moveItem(index);
+    }
+    
 }
 
 AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
@@ -62,7 +65,7 @@ function ShoppingListCheckOffService(){
         TBitems.push(item);
     }
 
-    service.removeItem = function(index) {
+    service.moveItem = function(index) {
         ABitems.push(TBitems[index]);
         TBitems.splice(index,1);
     }

@@ -31,10 +31,9 @@
                 <div class="container text-center">
                     <h3>To Buy</h3>
                     <hr>
-                    youyo
-                    <div class="alert alert-info text-left" ng-repeat="item in TBites" >
+                    <div class="alert alert-info text-left" ng-repeat="item in TBitems" >
                         {{$index+1}}. Buy <strong>{{item.quantity}} {{item.name}}</strong>
-                        <span class="text-right"><button class="btn btn-info btn-sm" ng-click="move_to_bought()">Bought</button></span>
+                        <span class="text-right"><button class="btn btn-info btn-sm" ng-click="move_to_bought($index)">Bought</button></span>
                     </div>
                 </div>
             </div>
