@@ -2,25 +2,39 @@
 'use strict';
 
 var app = angular.module('ShoppingListCheckOff',[])
+.controller('addItemController',addItemController)
 .controller('ToBuyController',ToBuyController)
 .controller('AlreadyBoughtController',AlreadyBoughtController)
 .service('ShoppingListCheckOffService',ShoppingListCheckOffService);
+
+
+addItemController.$inject = ['ShoppingListCheckOffService'];
+function addItemController(ShoppingListCheckOffService){
+    var add = this;
+    add.itemName = "";
+    add.itemQuantity = "";
+
+    add.addItem = function(){
+        ShoppingListCheckOffService.addItem(add.itemName,add.itemQuantity);
+    }
+
+}
 
 ToBuyController.$inject = ['ShoppingListCheckOffService'];
 function ToBuyController(ShoppingListCheckOffService){
     var tbc = this;
 
-    tbc.itemName = "";
-    tbc.itemQuantity = "";
-
-    tbc.addItem = function(){
-        ShoppingListCheckOffService.addItem(tbc.itemName,tbc.itemQuantity);
-    }
-
+    tbc.isEmpty = false;
+    
     tbc.TBitems = ShoppingListCheckOffService.getTBItems();
 
     tbc.move_to_bought = function(index){
         ShoppingListCheckOffService.moveItem(index);
+        if(tbc.TBitems.length == 0){
+            tbc.isEmpty = true;
+        }else{
+            tbc.isEmpty = false;
+        }
     }
     
 }
@@ -68,15 +82,15 @@ function ShoppingListCheckOffService(){
     service.moveItem = function(index) {
         ABitems.push(TBitems[index]);
         TBitems.splice(index,1);
-    }
+    };
 
     service.getTBItems = function(){
         return TBitems;
-    }
+    };
 
     service.getABItems = function(){
         return ABitems;
-    }
+    };
 }
 
 
