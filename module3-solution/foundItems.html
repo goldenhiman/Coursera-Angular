@@ -1,5 +1,5 @@
-<div class="alert alert-info col-12 mb-3 p-3">
-    <h4>{{item.name}}}</h4>
-    <p>{{item.description}}</p>
-    <div class="text-right"><button class="btn btn-md btn-danger" ng-click="removeItem($index)">Don't want this one!</button></div>
+<div class="alert alert-info text-left col-12 mb-3 p-3">
+    <h4>{{item.name}}</h4>
+    <p class="fine">{{item.description}}</p>
+    <div class="text-right" id="no-btn"><button class="btn btn-md btn-danger" ng-click="ndc.removeItem($index)"> <strong>&times; </strong> Don't want this one!</button></div>
 </div>

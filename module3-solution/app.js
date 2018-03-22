@@ -13,25 +13,25 @@ NarrowItDownController.$inject = ['MenuSearchService'];
 function NarrowItDownController(MenuSearchService){
     var ndc = this;
 
+    ndc.found = [];
     ndc.searchTerm = '';
     ndc.getMatchedMenuItems = function(searchTerm){
-        ndc.found = MenuSearchService.getMatchedMenuItems(searchTerm)
+        MenuSearchService.getMatchedMenuItems(searchTerm,function(data){
+            ndc.found = data;
+        });
     };
 
-    console.log(ndc.found);
-
-
-
-
+    ndc.removeItem = function(index){
+        ndc.found.splice(index,1);
+    };
 }
 
 
 //directives
 
-function foundItems(arr){
+function foundItems(){
     var ddo = {
-        templateUrl: "foundItems.html",
-        
+        templateUrl: "foundItems.html"  
     };
 
     return ddo;
@@ -44,15 +44,29 @@ MenuSearchService.$inject = ['$http', 'AppBaseAddr']
 function MenuSearchService($http, AppBaseAddr){
     var nds = this;
 
-    nds.getMatchedMenuItems = function(searchTerm){
+    nds.getMatchedMenuItems = function(searchTerm, cbfunc){
         return $http({
             method: 'GET',
             url: ( AppBaseAddr + "/menu_items.json" ),
-            params: {
-                category: searchTerm
-            }
         }).then(function(result){
-            return result.data;
+            var foundItems = [];
+            var searchArr = searchTerm.split(/,| /);
+            for(var i=0; i< result.data.menu_items.length; i++){
+                var tempArr = result.data.menu_items[i].description.split(/,| /);
+                var count = 0;
+                for(var j=0; j<searchArr.length; j++){
+                    for(var k=0; k<tempArr.length; k++){
+                        if(searchArr[j] == tempArr[k]){
+                            count++;
+                            break;
+                        }
+                    }
+                }
+                if(count==searchArr.length){
+                    foundItems.push(result.data.menu_items[i]);
+                }
+            }
+            cbfunc(foundItems);
         });
     }
 }
