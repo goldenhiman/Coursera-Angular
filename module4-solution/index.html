@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .form-control{
+            display:inline;
+            width: 70%;
+            margin: 3px;
+        }
+        .jumbotron button{
+            margin-top: 1em;
+        }
+        .container-fluid{
+            background: #fff;
+            padding-top: 1.5em;
+        }
+        .alert{
+            box-shadow: 0 0 20px #22222222;
+            cursor: pointer; 
+            transition: 200ms ease-in-out;
+        }
+        .alert:hover{
+            box-shadow: 0 0 10px #22222244;
+            transition: 100ms ease-in-out;
+        }
+    </style>
+    
+    <title>Module 4 Solution</title>
+</head>
+<body ng-app="MenuApp">
+    <div class="jumbotron text-center">
+        <div class="container">    
+            <div class="text-left">
+                <a href="../index.html" class="btn btn-md btn-outline-danger mx-auto">&laquo; Go Back to Home</a>
+            </div>
+        </div>
+        <h1>Welcome to our Restaurant!</h1>
+        <p>What would you like to have this fine day?</p>
+    </div>
+    <div class="container">
+        <div class="tabs">
+
+        </div>
+        <div class="text-center"><ui-view></ui-view></div>
+        
+    </div>
+
+    
+    <!-- CDN Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+
+    <!-- Modules -->
+    <script src="./src/modules/menuapp.module.js"></script>
+    <script src="src/modules/data.module.js"></script>
+
+    <!-- Controllers -->
+    <script src="src/controllers/CategoriesController.js"></script>
+    <script src="src/controllers/ItemsController.js"></script>
+
+    <!-- Services -->
+    <script src="src/services/menudata.service.js"></script>
+
+    <!-- Components -->
+    <script src="src/components/categories.component.js"></script>
+    <script src="src/components/items.component.js"></script>
+
+    <!-- Router -->
+    <script src="src/router/routes.js"></script>
+</body>
+</html>
