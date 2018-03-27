@@ -3,7 +3,7 @@
 <h1>Categories</h1>
 <hr>
 <div class="row">
-    <div class="col-4 mb-3 p-3" ng-repeat="category in cat.ctgry" ui-sref="items({short_name: category.short_name})">
+    <div class="col-4 mb-2 p-3" ng-repeat="category in cat.ctgry" ui-sref="items({short_name: category.short_name})">
             <div class="alert alert-info">
                 <h3>{{category.short_name}}</h3>
                 <p>{{category.name}}</p>
