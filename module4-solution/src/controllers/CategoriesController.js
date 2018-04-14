@@ -6,6 +6,4 @@ function CategoriesController(categories){
     var cat = this;
 
     cat.ctgry = categories;
-    console.log(cat.ctgry);
-    
 }
